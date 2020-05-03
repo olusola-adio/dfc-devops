@@ -17,7 +17,7 @@ steps:
   displayName: Set JMeterSlaves variable
 - pwsh: Write-Output "##vso[task.setvariable variable=JMeterSlaveDeploymentNodeSelector]$(JMeterSlaveDeploymentNodeSelector1)"
   displayName: Set JMeterSlaveDeploymentNodeSelector variable
-- task: esfadevops.Tokenization.custom-build-task.Tokenization@0
+- task: TotalALM.totalalm-tokenization.tokenization-build-task.Tokenization@2
   displayName: 'Tokenization: Transform file ${{ parameters.ManifestFileName }}'
   inputs:
     SourcePath: ${{ parameters.PathToManifest }}/temp
@@ -46,7 +46,7 @@ steps:
   displayName: Set JMeterSlaves variable
 - pwsh: Write-Output "##vso[task.setvariable variable=JMeterSlaveDeploymentNodeSelector]$(JMeterSlaveDeploymentNodeSelector2)"
   displayName: Set JMeterSlaveDeploymentNodeSelector variable
-- task: esfadevops.Tokenization.custom-build-task.Tokenization@0
+- task: TotalALM.totalalm-tokenization.tokenization-build-task.Tokenization@2
   displayName: 'Tokenization: Transform file ${{ parameters.ManifestFileName }}'
   inputs:
     SourcePath: ${{ parameters.PathToManifest }}/temp
