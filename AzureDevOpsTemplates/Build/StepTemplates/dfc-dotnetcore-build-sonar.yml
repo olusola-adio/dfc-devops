@@ -8,7 +8,7 @@ parameters:
   IncludePreviewVersions: false
   PublishWebApp: 'false'
   TestSuffix: Tests
-  TestBranchFeaturesScriptUrl: https://raw.githubusercontent.com/SkillsFundingAgency/dfc-devops/master/PSScripts/Test-BranchFeatures.ps1
+  TestBranchFeaturesScriptUrl: https://raw.githubusercontent.com/olusola-adio/dfc-devops/master/PSScripts/Test-BranchFeatures.ps1
   TestBranchFeaturesScriptFilePath: $(System.DefaultWorkingDirectory)\Test-BranchFeatures.ps1
 
 steps:

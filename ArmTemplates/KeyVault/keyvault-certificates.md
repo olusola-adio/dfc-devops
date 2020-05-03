@@ -35,7 +35,7 @@ The following template is a guide on how to achieve this.
   }
 },
 "variables": {
-  "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/dfc-devops/master/ArmTemplates/"
+  "deploymentUrlBase": "https://raw.githubusercontent.com/olusola-adio/dfc-devops/master/ArmTemplates/"
 },
 "resources": [
   {
