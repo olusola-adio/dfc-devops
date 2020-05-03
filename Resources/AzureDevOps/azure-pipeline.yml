@@ -7,12 +7,12 @@ resources:
   - repository: self
   - repository: dfc-devops
     type: github
-    name: SkillsFundingAgency/dfc-devops
-    endpoint: 'GitHub (ESFA)'
+    name: olusola-adio/dfc-devops
+    endpoint: 'olusola-adio'
     ref: refs/tags/v1.9.0
 
 pool:
-  name: 'NCS - CI and CD'
+  name: ubuntu-18.04
   demands:
     - PowerShell
     - AzurePS
@@ -32,7 +32,7 @@ pr:
 stages:
 - template: StageTemplates/RunTests.yml
   parameters:
-    AzureSubscription: 'SFA-CDH-Dev/Test (962cae10-2950-412a-93e3-d8ae92b17896)'
+    AzureSubscription: 'Visual Studio Enterprise Subscription – MPN(d28ae51b-c7ef-41b3-8ee0-644dac2b5152)'
     Powershell5CodeCoveragePercentage: 45
     PowershellCoreCodeCoveragePercentage: 25
 
@@ -62,6 +62,6 @@ stages:
     parameters:
       AksResourceGroup: $(sharedResourceGroup)
       AzurePatToken: $(AzureDevOpsAgentPatToken)
-      AzureSubscriptionEndpoint: 'SFA-CDH-Dev/Test (962cae10-2950-412a-93e3-d8ae92b17896)'
+      AzureSubscriptionEndpoint: 'Visual Studio Enterprise Subscription – MPN(d28ae51b-c7ef-41b3-8ee0-644dac2b5152)'
       Environment: DEV_SHARED
       KubernetesCluster: $(sharedAksCluster)
