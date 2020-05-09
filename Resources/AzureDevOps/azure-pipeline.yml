@@ -12,10 +12,6 @@ resources:
 
 pool:
   vmImage: 'ubuntu-latest'
-  demands:
-    #- PowerShell
-    - AzurePS
-    - docker
 
 trigger:
   branches:
