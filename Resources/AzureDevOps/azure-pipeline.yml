@@ -5,10 +5,10 @@ variables:
 resources:
   repositories:
   - repository: self
-  # - repository: dfc-devops
-  #   type: github
-  #   name: olusola-adio/dfc-devops
-  #   endpoint: 'olusola-adio'
+  - repository: dfc-devops
+    type: github
+    name: olusola-adio/dfc-devops
+    endpoint: 'olusola-adio'
 
 pool:
   vmImage: 'windows-latest'
