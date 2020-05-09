@@ -22,8 +22,8 @@ jobs:
   - script: dir $(System.DefaultWorkingDirectory)
   - task: PowerShell@2
     inputs:
-    targetType: inline
-    script: 'Install-Module -Name Pester -Force -SkipPublisherCheck' # Required when targetType == Inline
+      targetType: inline
+      script: 'Install-Module -Name Pester -Force -SkipPublisherCheck' # Required when targetType == Inline
   - ${{ if eq(parameters.RequiresAzurePowershell, true) }}:
     - task: AzurePowerShell@3
       displayName: 'AzurePowershell: Invoke-${{ parameters.TestType }}Tests.ps1'
