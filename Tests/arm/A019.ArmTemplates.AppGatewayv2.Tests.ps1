@@ -7,7 +7,7 @@ Describe "App Gateway Deployment Tests" -Tag "Acceptance" {
   Context "When an app gateway is deployed with just a single pool" {
     $TemplateParameters = @{
       appGatewayName      = "dfc-foo-bar-ag"
-      subnetRef           = "/subscriptions/962cae10-2950-412a-93e3-d8ae92b17896/resourceGroups/dfc-foo-bar-rg/providers/Microsoft.Network/virtualNetworks/dfc-foo-bar-vnet/subnets/appgateway"
+      subnetRef           = "/subscriptions/d28ae51b-c7ef-41b3-8ee0-644dac2b5152/resourceGroups/dfc-foo-bar-rg/providers/Microsoft.Network/virtualNetworks/dfc-foo-bar-vnet/subnets/appgateway"
       backendPools        = @( @{
                                   name = "mypool"
                                   fqdn = "foo.example.net"
@@ -25,7 +25,7 @@ Describe "App Gateway Deployment Tests" -Tag "Acceptance" {
                                   paths       = @( "/dummy/*" )
                             } )
       publicIpAddressId   = "1.2.3.4"
-      userAssignedIdentityName = "dfc-test-template-uim"
+      userAssignedIdentityName = "olu-test-template-uim"
     }
     $TestTemplateParams = @{
       ResourceGroupName       = $ResourceGroupName
