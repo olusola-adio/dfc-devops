@@ -8,7 +8,7 @@ resources:
   - repository: dfc-devops
     type: github
     name: olusola-adio/dfc-devops
-    endpoint: 'GitHub (ESFA)'
+    endpoint: 'olusola-adio'
     ref: refs/tags/v1.8.5
 
 trigger:
@@ -54,6 +54,6 @@ stages:
   - template: JobTemplates\DeployContainers.yml
     parameters:
       AksResourceGroup: $(sharedResourceGroup)
-      AzureSubscriptionEndpoint: 'SFA-CDH-Dev/Test (962cae10-2950-412a-93e3-d8ae92b17896)'
+      AzureSubscriptionEndpoint: 'Visual Studio Enterprise Subscription – MPN (d28ae51b-c7ef-41b3-8ee0-644dac2b5152)'
       Environment: DEV_SHARED
       KubernetesCluster: $(sharedAksCluster)
