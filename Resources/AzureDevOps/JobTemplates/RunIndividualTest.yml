@@ -27,7 +27,7 @@ jobs:
   - task: PowerShell@2
     inputs:
       targetType: inline
-      script: 'Install-Module -Name PSScriptAnalyzer' # Required when targetType == Inline
+      script: 'Install-Module -Name PSScriptAnalyzer -Force -SkipPublisherCheck' # Required when targetType == Inline
   - task: PowerShell@2
     inputs:
       targetType: inline
