@@ -6,8 +6,10 @@ parameters:
 stages:
 - stage: Test
   jobs:
-    - checkout: dfc-devops
-      path: 's/dfc-devops/'
+    - job: 'clean stuff'
+      steps:
+      - checkout: dfc-devops
+        path: 's/dfc-devops/'
     - template: ../JobTemplates/RunIndividualTest.yml
       parameters:
         RequiresAzurePowershell: true
