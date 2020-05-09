@@ -1,14 +1,14 @@
 parameters:
   ArmTemplateRoot: ''
   SolutionBaseName: ''
-  AzureSubscription: 'SFA-CDH-Dev/Test (962cae10-2950-412a-93e3-d8ae92b17896)'
+  AzureSubscription: 'Visual Studio Enterprise Subscription – MPN (d28ae51b-c7ef-41b3-8ee0-644dac2b5152)'
   PublishPipelineArtifact: false
   TestArmTemplateScriptUrl: https://raw.githubusercontent.com/SkillsFundingAgency/dfc-devops/master/PSScripts/Test-ArmTemplate.ps1
   TestArmTemplateScriptFilePath: $(System.DefaultWorkingDirectory)\Test-ArmTemplate.ps1
   TokenizeTestParameters: false
 
 steps:
-- task: esfadevops.Tokenization.custom-build-task.Tokenization@0
+- task: TotalALM.totalalm-tokenization.tokenization-build-task.Tokenization@2
   condition: ${{ parameters.TokenizeTestParameters }}
   displayName: 'Tokenization: Transform file test-parameters.json'
   inputs:
