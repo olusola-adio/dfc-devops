@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "dfc-test-template-rg"
+$ResourceGroupName = "olu-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\ArmTemplates\ServiceBus\servicebus-queue-authrule.json"
 
 Describe "Service Bus Queue Authorization Rule (shared access policy) Deployment Tests" -Tag "Acceptance" {

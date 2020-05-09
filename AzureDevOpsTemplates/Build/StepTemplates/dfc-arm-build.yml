@@ -3,7 +3,7 @@ parameters:
   SolutionBaseName: ''
   AzureSubscription: 'Visual Studio Enterprise Subscription – MPN (d28ae51b-c7ef-41b3-8ee0-644dac2b5152)'
   PublishPipelineArtifact: false
-  TestArmTemplateScriptUrl: https://raw.githubusercontent.com/SkillsFundingAgency/dfc-devops/master/PSScripts/Test-ArmTemplate.ps1
+  TestArmTemplateScriptUrl: https://raw.githubusercontent.com/olusola-adio/dfc-devops/master/PSScripts/Test-ArmTemplate.ps1
   TestArmTemplateScriptFilePath: $(System.DefaultWorkingDirectory)\Test-ArmTemplate.ps1
   TokenizeTestParameters: false
 

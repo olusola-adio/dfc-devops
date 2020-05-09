@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "dfc-test-template-rg"
+$ResourceGroupName = "olu-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\ArmTemplates\app-gateway-v2.json"
 
 Describe "App Gateway Deployment Tests" -Tag "Acceptance" {
@@ -25,7 +25,7 @@ Describe "App Gateway Deployment Tests" -Tag "Acceptance" {
                                   paths       = @( "/dummy/*" )
                             } )
       publicIpAddressId   = "1.2.3.4"
-      userAssignedIdentityName = "dfc-test-template-uim"
+      userAssignedIdentityName = "olu-test-template-uim"
     }
     $TestTemplateParams = @{
       ResourceGroupName       = $ResourceGroupName

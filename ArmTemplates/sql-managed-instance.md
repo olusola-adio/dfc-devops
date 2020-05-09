@@ -70,7 +70,7 @@ This can easily be achieved by usinghte [managed-instance-environment template](
   }
 },
 "variables": {
-  "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/dfc-devops/master/ArmTemplates/",
+  "deploymentUrlBase": "https://raw.githubusercontent.com/olusola-adio/dfc-devops/master/ArmTemplates/",
   "sqlServerName": "[concat(parameters('virtualNetworkPrefix'), '-sql')]"
 },
 "resources": [
