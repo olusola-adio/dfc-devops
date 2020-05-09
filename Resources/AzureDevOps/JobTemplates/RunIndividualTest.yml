@@ -18,7 +18,7 @@ jobs:
       Contents: |
         **/TEST-${{ parameters.ResultsFileSuffix }}.xml
         **/CODECOVERAGE-${{ parameters.ResultsFileSuffix }}.xml
-  - checkout: dfc-devops
+  - checkout: self
     path: 's/'
   - script: dir $(Build.SourcesDirectory)
   - script: dir $(System.DefaultWorkingDirectory)
