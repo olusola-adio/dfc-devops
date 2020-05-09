@@ -29,12 +29,12 @@ param(
     [Parameter(Mandatory=$true)]
     [string]$ResourceGroupName,
     [Parameter(Mandatory=$false)]
-    [string]$Location = "West Europe",
+    [string]$Location = "UK South",
     [Parameter(Mandatory=$true)]
     [ValidateSet("Production", "Pre-Production", "Dev/Test")]
     [string]$Environment,
     [Parameter(Mandatory=$true)]
-    [ValidateSet("National Careers Service", "National Careers Service (PP)")]
+    [ValidateSet("Logion Limited", "Logion Limited (PP)")]
     [string]$ParentBusiness,
     [Parameter(Mandatory=$true)]
     [ValidateSet("Course Directory", "Course Directory (PP)", "Data Sharing Service", "Data Sharing Service (PP)", "Digital First Career Service (DFCS) Website", "Digital First Career Service (DFCS) Website (PP)", "NCS Website", "NCS Website (PP)")]

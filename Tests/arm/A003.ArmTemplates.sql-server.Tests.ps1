@@ -4,7 +4,7 @@ $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\sql-server.json"
 $TemplateParametersDefault = @{
   sqlServerName                         = "dfc-foo-bar-sql"
   sqlServerAdminPassword                = "Not-a-real-password"
-  storageAccountName                    = "dfctesttemplatestr"
+  storageAccountName                    = "olutesttemplatestr"
   sqlServerActiveDirectoryAdminLogin    = "SQL_ADMIN_GRP"
   sqlServerActiveDirectoryAdminObjectId = "12345678-abcd-abcd-abcd-1234567890ab"
 }
