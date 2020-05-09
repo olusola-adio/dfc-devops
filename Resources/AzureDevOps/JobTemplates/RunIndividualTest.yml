@@ -20,6 +20,7 @@ jobs:
         **/CODECOVERAGE-${{ parameters.ResultsFileSuffix }}.xml
   - checkout: self
     path: 's/'
+    clean: true
   - script: dir $(Build.SourcesDirectory)
   - script: dir $(System.DefaultWorkingDirectory)
   - ${{ if eq(parameters.RequiresAzurePowershell, true) }}:
