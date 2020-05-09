@@ -6,11 +6,6 @@ parameters:
 stages:
 - stage: Test
   jobs:
-    - job: checkout 
-      displayName: 'checkout code'
-      steps:
-      - checkout: dfc-devops
-        path: 's/dfc-devops/'
     - template: ../JobTemplates/RunIndividualTest.yml
       parameters:
         RequiresAzurePowershell: true

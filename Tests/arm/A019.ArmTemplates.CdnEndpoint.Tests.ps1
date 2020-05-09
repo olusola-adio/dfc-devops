@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "dfc-test-template-rg"
+$ResourceGroupName = "olu-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\CDN\cdn-endpoint.json"
 $TemplateParametersDefault = @{
     cdnProfileName = "dfc-foo-shared-cdn"
