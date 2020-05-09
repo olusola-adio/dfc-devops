@@ -18,7 +18,8 @@ jobs:
       Contents: |
         **/TEST-${{ parameters.ResultsFileSuffix }}.xml
         **/CODECOVERAGE-${{ parameters.ResultsFileSuffix }}.xml
-
+  - script: dir $(Build.SourcesDirectory)
+  - script: dir $(System.DefaultWorkingDirectory)
   - ${{ if eq(parameters.RequiresAzurePowershell, true) }}:
     - task: AzurePowerShell@3
       displayName: 'AzurePowershell: Invoke-${{ parameters.TestType }}Tests.ps1'
