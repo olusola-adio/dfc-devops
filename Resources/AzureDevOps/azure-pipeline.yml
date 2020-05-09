@@ -13,7 +13,7 @@ resources:
 pool:
   vmImage: 'ubuntu-latest'
   demands:
-    - PowerShell
+    #- PowerShell
     - AzurePS
     - docker
 
