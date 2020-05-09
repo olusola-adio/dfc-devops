@@ -7,8 +7,8 @@ Describe "Add-StorageAuditResults unit tests" -Tag "Unit" {
 
     Mock Get-AzStorageAccount -MockWith { return @(
         @{
-            StorageAccountName = "dfcfoosharedstr"
-            ResourceGroupName = "dfc-foo-shared-rg"
+            StorageAccountName = "olufoosharedstr"
+            ResourceGroupName = "olu-foo-shared-rg"
         },
         @{
             StorageAccountName = "dssfoosharedstr"
@@ -179,8 +179,8 @@ Describe "Add-StorageAuditResults unit tests" -Tag "Unit" {
 
         Mock Get-AzStorageAccount -MockWith { return @(
             @{
-                StorageAccountName = "dfcfoosharedstr"
-                ResourceGroupName = "dfc-foo-shared-rg"
+                StorageAccountName = "olufoosharedstr"
+                ResourceGroupName = "olu-foo-shared-rg"
             },
             @{
                 StorageAccountName = "dssfoosharedstr"

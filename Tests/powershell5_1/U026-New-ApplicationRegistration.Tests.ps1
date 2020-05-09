@@ -23,12 +23,12 @@ Describe "New-ApplicationRegistration unit tests" -Tag "Unit" {
         Mock Get-AzureRmKeyVault 
 
         $CmdletParameters = @{
-            AppRegistrationName = "dfc-foo-bar-app"
+            AppRegistrationName = "olu-foo-bar-app"
             AddSecret = $true
-            KeyVaultName = "dfc-foo-shared-kv"
+            KeyVaultName = "olu-foo-shared-kv"
         }
 
-        { .\New-ApplicationRegistration @CmdletParameters } | Should Throw "KeyVault dfc-foo-shared-kv doesn't exist, nowhere to store secret"
+        { .\New-ApplicationRegistration @CmdletParameters } | Should Throw "KeyVault olu-foo-shared-kv doesn't exist, nowhere to store secret"
 
         Assert-MockCalled Get-AzureRmContext -Exactly 1 -Scope It
         Assert-MockCalled Get-AzureRmADServicePrincipal -ParameterFilter { $ApplicationId } -Exactly 1 -Scope It
@@ -42,7 +42,7 @@ Describe "New-ApplicationRegistration unit tests" -Tag "Unit" {
 
         Mock Get-AzureRmKeyVault { [PSCustomObject]
             @{
-                VaultName   = "dfc-foo-shared-kv"
+                VaultName   = "olu-foo-shared-kv"
                 AccessPolicies = @(
                     @{
                         ObjectId = "4a11d94c-9c97-4c0b-8f85-476c1ef15956"
@@ -53,12 +53,12 @@ Describe "New-ApplicationRegistration unit tests" -Tag "Unit" {
         }
 
         $CmdletParameters = @{
-            AppRegistrationName = "dfc-foo-bar-app"
+            AppRegistrationName = "olu-foo-bar-app"
             AddSecret = $true
-            KeyVaultName = "dfc-foo-shared-kv"
+            KeyVaultName = "olu-foo-shared-kv"
         }
 
-        { .\New-ApplicationRegistration @CmdletParameters } | Should Throw "Service Principal 4a11d94c-9c97-4c0b-8f85-476c1ef15956 doesn't have Set permission on KeyVault dfc-foo-shared-kv"
+        { .\New-ApplicationRegistration @CmdletParameters } | Should Throw "Service Principal 4a11d94c-9c97-4c0b-8f85-476c1ef15956 doesn't have Set permission on KeyVault olu-foo-shared-kv"
 
         Assert-MockCalled Get-AzureRmContext -Exactly 1 -Scope It
         Assert-MockCalled Get-AzureRmADServicePrincipal -ParameterFilter { $ApplicationId } -Exactly 1 -Scope It
@@ -72,7 +72,7 @@ Describe "New-ApplicationRegistration unit tests" -Tag "Unit" {
 
         Mock Get-AzureRmKeyVault { [PSCustomObject]
             @{
-                VaultName   = "dfc-foo-shared-kv"
+                VaultName   = "olu-foo-shared-kv"
                 AccessPolicies = @(
                     @{
                         ObjectId = "4a11d94c-9c97-4c0b-8f85-476c1ef15956"
@@ -84,9 +84,9 @@ Describe "New-ApplicationRegistration unit tests" -Tag "Unit" {
         Mock Set-AzureKeyVaultSecret
 
         $CmdletParameters = @{
-            AppRegistrationName = "dfc-foo-bar-app"
+            AppRegistrationName = "olu-foo-bar-app"
             AddSecret = $true
-            KeyVaultName = "dfc-foo-shared-kv"
+            KeyVaultName = "olu-foo-shared-kv"
         }
 
         .\New-ApplicationRegistration @CmdletParameters

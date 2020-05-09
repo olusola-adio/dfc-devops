@@ -19,7 +19,7 @@ Describe "Add-AzureAdApiPermissionsToApp unit tests" -Tag "Unit" {
     Mock Get-AzureRmADApplication { [PsCustomObject] 
         @{
             ObjectId = "b68bcf9f-9ec6-47b6-bcc4-8efa9a0c497d"
-            DisplayName = "dfc-foo-bar-app"
+            DisplayName = "olu-foo-bar-app"
         }
     }
     Mock Set-AzureAdApplication
@@ -28,7 +28,7 @@ Describe "Add-AzureAdApiPermissionsToApp unit tests" -Tag "Unit" {
     It "Should call Set-AzureAdApplication when called with delegated permissions" -Skip {
 
         $CmdletParameters = @{
-            AppRegistrationDisplayName = "dfc-foo-bar-app"
+            AppRegistrationDisplayName = "olu-foo-bar-app"
             ApiName = "Microsoft Graph"
             DelegatedPermissions =  @("Directory.Read.All", "User.Read")
         }
