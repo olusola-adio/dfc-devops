@@ -20,7 +20,7 @@ jobs:
         **/CODECOVERAGE-${{ parameters.ResultsFileSuffix }}.xml
   - script: dir $(Build.SourcesDirectory)
   - script: dir $(System.DefaultWorkingDirectory)
-  - script: dir 'c:\program files\powershell'
+  - script: dir 'c:'
   - task: PowerShell@2
     inputs:
       targetType: inline
