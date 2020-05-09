@@ -6,7 +6,8 @@ parameters:
 stages:
 - stage: Test
   jobs:
-    - job: 'clean stuff'
+    - job: checkout 
+      displayName: 'checkout code'
       steps:
       - checkout: dfc-devops
         path: 's/dfc-devops/'
