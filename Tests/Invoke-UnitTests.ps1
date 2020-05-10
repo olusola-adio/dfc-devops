@@ -32,7 +32,7 @@ if($PSVersionTable.PSVersion.Major -gt 5) {
     $powerShellEdition = "pwsh"
 
     # Powershell Core 6 wipes this, losing the path to all modules...
-    $env:PSModulePath = "C:\Program Files\PowerShell\Modules;c:\program files\powershell\6\Modules;C:\windows\system32\WindowsPowerShell\v1.0\Modules;C:\Modules\az_2.6.0"
+    $env:PSModulePath = "C:\Program Files\PowerShell\Modules;c:\program files\powershell\7\Modules;C:\windows\system32\WindowsPowerShell\v1.0\Modules;C:\Modules\az_2.6.0"
 }
 
 
