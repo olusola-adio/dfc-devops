@@ -65,10 +65,10 @@ jobs:
       inputs:
         summaryFileLocation: '**/CODECOVERAGE-${{ parameters.ResultsFileSuffix }}.xml'
 
-    - task: PowerShell@2
-      displayName: 'PowerShell Script: Out-TestResults'
-      inputs:
-        targetType: filePath
-        filePath: '$(System.DefaultWorkingDirectory)/Tests/Out-TestAndCodeCoverageResults.ps1'
-        arguments: '-CoveragePercent ${{ parameters.CodeCoveragePercentage }}'
-        pwsh: true
+    # - task: PowerShell@2
+    #   displayName: 'PowerShell Script: Out-TestResults'
+    #   inputs:
+    #     targetType: filePath
+    #     filePath: '$(System.DefaultWorkingDirectory)/Tests/Out-TestAndCodeCoverageResults.ps1'
+    #     arguments: '-CoveragePercent ${{ parameters.CodeCoveragePercentage }}'
+    #     pwsh: true
