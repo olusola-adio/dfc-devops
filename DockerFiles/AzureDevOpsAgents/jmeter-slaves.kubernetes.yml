@@ -25,7 +25,7 @@ spec:
         kubernetes.io/hostname: __JMeterSlaveDeploymentNodeSelector__
       containers:
       - name: jmeter-slave
-        image: dfcdevsharedcr.azurecr.io/ncs.azuredevopsagents.jmeterslaves:__NCSAzureDevOpsAgentsJMeterTag__
+        image: oludevsharedcr.azurecr.io/ncs.azuredevopsagents.jmeterslaves:__NCSAzureDevOpsAgentsJMeterTag__
         resources:
           requests:
             cpu: 500m
