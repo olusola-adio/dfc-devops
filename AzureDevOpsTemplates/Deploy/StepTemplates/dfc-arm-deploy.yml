@@ -36,7 +36,7 @@ steps:
   inputs:
     azureSubscription: ${{ parameters.AzureSubscription }}
     resourceGroupName: '${{ parameters.ResourceGroup }}'
-    location: 'West Europe'
+    location: 'North Europe'
     csmFile: '${{ parameters.ArmTemplateRoot }}/template.json'
     csmParametersFile: '${{ parameters.ArmTemplateRoot }}/parameters.json'
     deploymentOutputs: ARMOutputs

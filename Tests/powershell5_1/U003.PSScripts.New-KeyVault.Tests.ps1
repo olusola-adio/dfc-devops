@@ -2,7 +2,7 @@ Push-Location -Path $PSScriptRoot\..\..\PSScripts\
 
 Describe "New-KeyVault unit tests" -Tag "Unit" {
 
-    Mock Get-AzureRmResourceGroup { return ConvertFrom-Json '{ "ResourceGroupName": "dfc-foobar-rg", "Location": "westeurope" }' }
+    Mock Get-AzureRmResourceGroup { return ConvertFrom-Json '{ "ResourceGroupName": "dfc-foobar-rg", "Location": "northeurope" }' }
     Mock New-AzureRmKeyVault { return ConvertFrom-Json '{ "VaultName": "dfc-foobar-kv", "AccessPolicies": [ { "ObjectId": "12345678-abcd-1234-5678-1234567890ab" } ] }' }
     Mock Remove-AzureRmKeyVaultAccessPolicy
 
@@ -21,7 +21,7 @@ Describe "New-KeyVault unit tests" -Tag "Unit" {
     }
 
     It "Should not create anything if the key vault already exist" {
-        Mock Get-AzureRmKeyVault { return ConvertFrom-Json '{ "VaultName": "dfc-foobar-kv", "ResourceGroupName": "dfc-foobar-rg", "Location": "westeurope" }' }
+        Mock Get-AzureRmKeyVault { return ConvertFrom-Json '{ "VaultName": "dfc-foobar-kv", "ResourceGroupName": "dfc-foobar-rg", "Location": "northeurope" }' }
 
         .\New-KeyVault -keyVaultName $kvname -ResourceGroupName $rgname
 

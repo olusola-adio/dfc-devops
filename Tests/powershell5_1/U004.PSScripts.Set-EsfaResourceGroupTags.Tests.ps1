@@ -49,7 +49,7 @@ Describe "Set-EsfaResourceGroupTags unit tests" -Tag "Unit" {
         Mock Get-AzureRmResourceGroup { [PsCustomObject]
             @{
                 ResourceGroupName = "dfc-foobar-rg"
-                Location = "westeurope"
+                Location = "northeurope"
             }
         }
     
