@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "olu-test-template-rg"
+$ResourceGroupName = "dwp-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\ServiceBus\servicebus-queue.json"
 
 Describe "Service Bus Queue Deployment Tests" -Tag "Acceptance" {

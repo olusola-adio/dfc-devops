@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "olu-test-template-rg"
+$ResourceGroupName = "dwp-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\redis.json"
 
 Describe "Redis Cache Deployment Tests" -Tag "Acceptance" {

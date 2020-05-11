@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "olu-test-template-rg"
+$ResourceGroupName = "dwp-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\KeyVault\keyvault-secrets.json"
 
 Describe "Key Vault Secrets Deployment Tests" -Tag "Acceptance" {

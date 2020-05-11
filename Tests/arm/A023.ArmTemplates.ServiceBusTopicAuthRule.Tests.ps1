@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "olu-test-template-rg"
+$ResourceGroupName = "dwp-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\ServiceBus\servicebus-topic-authrule.json"
 
 Describe "Service Bus Topic Authorization Rule (shared access policy) Deployment Tests" -Tag "Acceptance" {

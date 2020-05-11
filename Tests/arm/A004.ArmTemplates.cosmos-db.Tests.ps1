@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "olu-test-template-rg"
+$ResourceGroupName = "dwp-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\cosmos-db.json"
 
 Describe "Key Vault Deployment Tests" -Tag "Acceptance" {

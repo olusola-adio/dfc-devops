@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "olu-test-template-rg"
+$ResourceGroupName = "dwp-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\sql-server.json"
 $TemplateParametersDefault = @{
   sqlServerName                         = "dfc-foo-bar-sql"
