@@ -40,6 +40,7 @@ if ($PSCmdlet.MyInvocation.BoundParameters["Verbose"].IsPresent) {
     $DeploymentParameters
 
 }
+$DebugPreference = "Continue"
 $Result = Test-AzureRmResourceGroupDeployment @DeploymentParameters
 if ($Result.Count -gt 0) {
 
@@ -47,3 +48,4 @@ if ($Result.Count -gt 0) {
     throw "Template is invalid"
 
 }
+$DebugPreference = "SilentlyContinue"
