@@ -27,7 +27,7 @@ stages:
   jobs:
   - template: JobTemplates\Test.yml
     parameters:
-      AzureSubscription: 'Visual Studio Enterprise Subscription – MPN (d28ae51b-c7ef-41b3-8ee0-644dac2b5152)'
+      AzureSubscription: 'dwp(bcf9fd2c-cdb6-4af1-9890-9c12785ee2f9)'
       CodeCoveragePercentage: 45
 
 - stage: BuildAndPublishContainers
@@ -54,6 +54,6 @@ stages:
   - template: JobTemplates\DeployContainers.yml
     parameters:
       AksResourceGroup: $(sharedResourceGroup)
-      AzureSubscriptionEndpoint: 'Visual Studio Enterprise Subscription – MPN (d28ae51b-c7ef-41b3-8ee0-644dac2b5152)'
+      AzureSubscriptionEndpoint: 'dwp(bcf9fd2c-cdb6-4af1-9890-9c12785ee2f9)'
       Environment: DEV_SHARED
       KubernetesCluster: $(sharedAksCluster)
