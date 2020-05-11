@@ -6,7 +6,7 @@ Describe "Service Bus Queue Deployment Tests" -Tag "Acceptance" {
   
   Context "When deploying a queue to a Service Bus Namespace" {
     $TemplateParameters = @{
-      serviceBusNamespaceName = "dfc-foo-bar-ns"
+      serviceBusNamespaceName = "dwp-foo-bar-ns"
       queueName               = "a-queue-name"
     }
     $TestTemplateParams = @{

@@ -6,7 +6,7 @@ Describe "Service Bus Topic Subscription Deployment Tests" -Tag "Acceptance" {
   
   Context "When deploying a Subscription to a Service Bus Topic" {
     $TemplateParameters = @{
-      serviceBusNamespaceName         = "dfc-foo-bar-ns"
+      serviceBusNamespaceName         = "dwp-foo-bar-ns"
       serviceBusTopicName             = "topic-name"
       serviceBusTopicSubscriptionName = "subname"
     }

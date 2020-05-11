@@ -1,9 +1,9 @@
 Push-Location -Path $PSScriptRoot\..\..\PSScripts\
 
 $params = @{
-    ResourceGroupName = "dfc-foo-bar-rg"
-    SQLServerName     = "dfc-foo-bar-sql"
-    SQLDatabase       = "dfc-foo-bar-db" 
+    ResourceGroupName = "dwp-foo-bar-rg"
+    SQLServerName     = "dwp-foo-bar-sql"
+    SQLDatabase       = "dwp-foo-bar-db" 
     SQLAdminUsername  = "admin"
     SQLAdminPassword  = "not-a-real-password"
     StorageAccountKey = "not-a-real-key"
@@ -33,7 +33,7 @@ Describe "New-DatabaseFromBlobFile unit tests" -Tag "Unit" {
     }
 
     It "Should add database to elastic pool if one is specified" {
-        $params['ElasticPool'] = "dfc-foo-bar-epl"
+        $params['ElasticPool'] = "dwp-foo-bar-epl"
 
         .\New-DatabaseFromBlobFile @params
 

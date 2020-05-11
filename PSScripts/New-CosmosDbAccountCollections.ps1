@@ -20,7 +20,7 @@ CosmosDb JSON configuration in string format
 CosmosDb JSON configuration as a file
 
 .EXAMPLE
-New-CosmosDbAccountCollections -CosmosDbAccountName "dfc-foo-bar-cdb" -CosmosDbConfigurationFilePath C:\path\to\config.json
+New-CosmosDbAccountCollections -CosmosDbAccountName "dwp-foo-bar-cdb" -CosmosDbConfigurationFilePath C:\path\to\config.json
 
 #>
 

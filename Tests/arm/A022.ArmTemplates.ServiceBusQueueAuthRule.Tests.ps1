@@ -6,7 +6,7 @@ Describe "Service Bus Queue Authorization Rule (shared access policy) Deployment
   
   Context "When deploying a shared access policy to a Service Bus Queue" {
     $TemplateParameters = @{
-      servicebusName        = "dfc-foo-bar-ns"
+      servicebusName        = "dwp-foo-bar-ns"
       queueName             = "queue-name"
       authorizationRuleName = "myrule"
       rights                = @( "listen" )

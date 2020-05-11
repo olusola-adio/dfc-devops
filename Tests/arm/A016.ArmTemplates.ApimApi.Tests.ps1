@@ -7,7 +7,7 @@ Describe "Apim Service Deployment Tests" -Tag "Acceptance" {
     Context "When APIM api is deployed with just name, product and api name" {
         $TemplateParameters = @{
             apimProductInstanceName = "product-bar-foo"
-            apimServiceName         = "dfc-foo-bar-apim"
+            apimServiceName         = "dwp-foo-bar-apim"
             apiName                 = "foo"
         }
         $TestTemplateParams = @{

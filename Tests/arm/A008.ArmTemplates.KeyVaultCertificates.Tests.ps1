@@ -6,7 +6,7 @@ Describe "Key Vault Certificates Deployment Tests" -Tag "Acceptance" {
   
   Context "When a single certificate from the key vault is created" {
     $TemplateParameters = @{
-      keyVaultName = "dfc-foo-bar-kv"
+      keyVaultName = "dwp-foo-bar-kv"
       certificates = @( "foo.example.com" )
     }
     $TestTemplateParams = @{
@@ -25,7 +25,7 @@ Describe "Key Vault Certificates Deployment Tests" -Tag "Acceptance" {
 
   Context "When a multiple certificates from the key vault are created" {
     $TemplateParameters = @{
-      keyVaultName = "dfc-foo-bar-kv"
+      keyVaultName = "dwp-foo-bar-kv"
       certificates = @( "foo.example.com" , "bar.example.com" )
     }
     $TestTemplateParams = @{

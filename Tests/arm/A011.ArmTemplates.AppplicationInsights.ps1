@@ -6,7 +6,7 @@ Describe "App Service Plan Deployment Tests" -Tag "Acceptance" {
   
   Context "When application insights is deployed with just name" {
     $TemplateParameters = @{
-      appInsightsName = "dfc-foo-bar-ai"
+      appInsightsName = "dwp-foo-bar-ai"
     }
     $TestTemplateParams = @{
       ResourceGroupName       = $ResourceGroupName

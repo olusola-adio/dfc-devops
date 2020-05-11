@@ -2,8 +2,8 @@
 $ResourceGroupName = "dwp-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\SqlServer\sql-database.json"
 $TemplateParametersDefault = @{
-    databaseName = "dfc-foo-bar-db"
-    sqlServerName = "dfc-foo-bar-sql"
+    databaseName = "dwp-foo-bar-db"
+    sqlServerName = "dwp-foo-bar-sql"
 }
 
 Describe "Sql Database Deployment Tests" -Tag "Acceptance" {

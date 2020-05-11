@@ -6,7 +6,7 @@ Describe "Key Vault Deployment Tests" -Tag "Acceptance" {
   
   Context "When KeyVault deployed with just key vault name" {
     $TemplateParameters = @{
-      keyVaultName = "dfc-foo-bar-kv"
+      keyVaultName = "dwp-foo-bar-kv"
     }
     $TestTemplateParams = @{
       ResourceGroupName       = $ResourceGroupName

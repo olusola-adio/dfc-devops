@@ -6,7 +6,7 @@ Describe "Service Bus Topic Deployment Tests" -Tag "Acceptance" {
   
   Context "When deploying the Service Bus Topic" {
     $TemplateParameters = @{
-      serviceBusNamespaceName = "dfc-foo-bar-ns"
+      serviceBusNamespaceName = "dwp-foo-bar-ns"
       serviceBusTopicName     = "topic-name"
     }
     $TestTemplateParams = @{

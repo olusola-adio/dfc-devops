@@ -25,18 +25,18 @@ Describe "Copy-SitefinityDatabase unit tests" -Tag "Unit" {
         param($ResourceGroupName, $ServerName, $DatabaseName, $CopyDatabaseName, $ElasticPoolName)
     }
 
-    # mock Get-AzResource: return valid object for dfc-foo-sql and dfc-foo-as, return null if not one of these
-    Mock Get-AzResource -ParameterFilter { $Name -eq 'dfc-foo-sql' } -MockWith { return @{
-        Name              = 'dfc-foo-sql'
-        ResourceGroupName = 'dfc-foo-rg'
+    # mock Get-AzResource: return valid object for dwp-foo-sql and dwp-foo-as, return null if not one of these
+    Mock Get-AzResource -ParameterFilter { $Name -eq 'dwp-foo-sql' } -MockWith { return @{
+        Name              = 'dwp-foo-sql'
+        ResourceGroupName = 'dwp-foo-rg'
         ResourceType      = 'Microsoft.Sql/servers'
-        ResourceId        = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providers/Microsoft.Sql/servers/dfc-foo-sql'
+        ResourceId        = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providers/Microsoft.Sql/servers/dwp-foo-sql'
     } }
-    Mock Get-AzResource -ParameterFilter { $Name -eq 'dfc-foo-as' } -MockWith { return @{
-        Name              = 'dfc-foo-as'
-        ResourceGroupName = 'dfc-foo-rg'
+    Mock Get-AzResource -ParameterFilter { $Name -eq 'dwp-foo-as' } -MockWith { return @{
+        Name              = 'dwp-foo-as'
+        ResourceGroupName = 'dwp-foo-rg'
         ResourceType      = 'Microsoft.Web/sites'
-        ResourceId        = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providersMicrosoft.Web/sites/dfc-foo-as'
+        ResourceId        = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providersMicrosoft.Web/sites/dwp-foo-as'
     } }
     Mock Get-AzResource -MockWith { return $null }
 
@@ -49,108 +49,108 @@ Describe "Copy-SitefinityDatabase unit tests" -Tag "Unit" {
     Context "When the Azure resources do not exist" {
 
         Mock Get-AzWebApp -MockWith { return @{
-            Name          = 'dfc-foo-as'
+            Name          = 'dwp-foo-as'
             Kind          = 'app'
-            ResourceGroup = 'dfc-foo-rg'
+            ResourceGroup = 'dwp-foo-rg'
             Type          = 'Microsoft.Web/sites'
-            Id            = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providersMicrosoft.Web/sites/dfc-foo-as'
+            Id            = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providersMicrosoft.Web/sites/dwp-foo-as'
             SiteConfig    = @{ AppSettings = @(
-                @{ Name = 'DatabaseVersion'; Value = 'dfc-foo-sitefinitydb' }
+                @{ Name = 'DatabaseVersion'; Value = 'dwp-foo-sitefinitydb' }
             ) }
         } }
 
         It "should throw an exception if SQL server does not exist" {
             { 
-                ./Copy-SitefinityDatabase -ServerName not-a-sql-server -AppServiceName dfc-foo-as  -ReleaseNumber 123
+                ./Copy-SitefinityDatabase -ServerName not-a-sql-server -AppServiceName dwp-foo-as  -ReleaseNumber 123
             } | Should throw "Could not find SQL server not-a-sql-server"
         }
 
         It "should throw an exception if app service does not exist" {
             { 
-                ./Copy-SitefinityDatabase -AppServiceName not-an-app-service -ServerName dfc-foo-sql -ReleaseNumber 123
+                ./Copy-SitefinityDatabase -AppServiceName not-an-app-service -ServerName dwp-foo-sql -ReleaseNumber 123
             } | Should throw "Could not find app service not-an-app-service"
         }
 
         It "should throw an exception if it cannot get the release number" {
             { 
-                ./Copy-SitefinityDatabase -AppServiceName dfc-foo-as -ServerName dfc-foo-sql
+                ./Copy-SitefinityDatabase -AppServiceName dwp-foo-as -ServerName dwp-foo-sql
             } | Should throw "Cannot find environment variable RELEASE_RELEASENAME and no ReleaseNumber passed in"
         }
 
         It "should throw an exception if the current database does not exist" {
             { 
-                ./Copy-SitefinityDatabase -AppServiceName dfc-foo-as -ServerName dfc-foo-sql -ReleaseNumber 123
-            } | Should throw "Could not find the current database dfc-foo-sitefinitydb"
+                ./Copy-SitefinityDatabase -AppServiceName dwp-foo-as -ServerName dwp-foo-sql -ReleaseNumber 123
+            } | Should throw "Could not find the current database dwp-foo-sitefinitydb"
         }
     }
 
     Context "When not specifying the release number and the environment variable is set" {
 
         Mock Get-AzWebApp -MockWith { return @{
-            Name          = 'dfc-foo-as'
+            Name          = 'dwp-foo-as'
             Kind          = 'app'
-            ResourceGroup = 'dfc-foo-rg'
+            ResourceGroup = 'dwp-foo-rg'
             Type          = 'Microsoft.Web/sites'
-            Id            = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providersMicrosoft.Web/sites/dfc-foo-as'
+            Id            = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providersMicrosoft.Web/sites/dwp-foo-as'
             SiteConfig    = @{ AppSettings = @(
-                @{ Name = 'DatabaseVersion'; Value = 'dfc-foo-sitefinitydb' }
+                @{ Name = 'DatabaseVersion'; Value = 'dwp-foo-sitefinitydb' }
             ) }
         } }
 
-        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dfc-foo-sitefinitydb" } -MockWith { return @{
-            DatabaseName      = 'dfc-foo-sitefinitydb'
-            ServerName        = 'dfc-foo-sql'
-            ResourceGroupName = 'dfc-foo-rg'
-            ResourceId        = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providers/Microsoft.Sql/servers/dfc-foo-sql/databases/dfc-foo-sitefinitydb'
+        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dwp-foo-sitefinitydb" } -MockWith { return @{
+            DatabaseName      = 'dwp-foo-sitefinitydb'
+            ServerName        = 'dwp-foo-sql'
+            ResourceGroupName = 'dwp-foo-rg'
+            ResourceId        = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providers/Microsoft.Sql/servers/dwp-foo-sql/databases/dwp-foo-sitefinitydb'
             SkuName           = 'Standard'
             ElasticPoolName   = $null
         } }
 
-        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dfc-foo-sitefinitydb-r123" } -MockWith { return $null }
+        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dwp-foo-sitefinitydb-r123" } -MockWith { return $null }
 
         $env:RELEASE_RELEASENAME =  "199-2"
 
-        ./Copy-SitefinityDatabase -AppServiceName dfc-foo-as -ServerName dfc-foo-sql
+        ./Copy-SitefinityDatabase -AppServiceName dwp-foo-as -ServerName dwp-foo-sql
 
         Remove-Item Env:\RELEASE_RELEASENAME
 
         It "should get the sql server resource description" {
-            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dfc-foo-sql" }
+            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dwp-foo-sql" }
         }
 
         It "should get the web app resource description" {
-            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dfc-foo-as" }
+            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dwp-foo-as" }
         }
 
         It "should get the web app details" {
             Assert-MockCalled Get-AzWebApp -Exactly 1 -ParameterFilter {
-                $Name -eq "dfc-foo-as" -and `
-                $ResourceGroupName -eq "dfc-foo-rg"
+                $Name -eq "dwp-foo-as" -and `
+                $ResourceGroupName -eq "dwp-foo-rg"
             }
         }
 
         It "should get the existing table" {
             Assert-MockCalled Get-AzSqlDatabase -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb"
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb"
             }
         }
 
-        It "should look for a copy database called dfc-foo-sitefinitydb-r199" {
+        It "should look for a copy database called dwp-foo-sitefinitydb-r199" {
             Assert-MockCalled Get-AzSqlDatabase -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb-r199"
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb-r199"
             }
         }
 
-        It "Should copy dfc-foo-sitefinitydb to dfc-foo-sitefinitydb-r199" {
+        It "Should copy dwp-foo-sitefinitydb to dwp-foo-sitefinitydb-r199" {
             Assert-MockCalled New-AzSqlDatabaseCopy -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb" -and `
-                $CopyDatabaseName -eq "dfc-foo-sitefinitydb-r199" -and `
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb" -and `
+                $CopyDatabaseName -eq "dwp-foo-sitefinitydb-r199" -and `
                 $ElasticPoolName -eq $null
             }
         }
@@ -162,7 +162,7 @@ Describe "Copy-SitefinityDatabase unit tests" -Tag "Unit" {
 
         It "should throw an exception" {
             { 
-                ./Copy-SitefinityDatabase -AppServiceName dfc-foo-as -ServerName dfc-foo-sql -ReleaseNumber 123
+                ./Copy-SitefinityDatabase -AppServiceName dwp-foo-as -ServerName dwp-foo-sql -ReleaseNumber 123
             } | Should throw "Could not determine current database version from DatabaseVersion app setting"
         }
 
@@ -171,66 +171,66 @@ Describe "Copy-SitefinityDatabase unit tests" -Tag "Unit" {
     Context "Everything specified exactly and currently a standard (not elastic pool) database with no version number attached" {
 
         Mock Get-AzWebApp -MockWith { return @{
-            Name          = 'dfc-foo-as'
+            Name          = 'dwp-foo-as'
             Kind          = 'app'
-            ResourceGroup = 'dfc-foo-rg'
+            ResourceGroup = 'dwp-foo-rg'
             Type          = 'Microsoft.Web/sites'
-            Id            = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providersMicrosoft.Web/sites/dfc-foo-as'
+            Id            = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providersMicrosoft.Web/sites/dwp-foo-as'
             SiteConfig    = @{ AppSettings = @(
-                @{ Name = 'DatabaseVersion'; Value = 'dfc-foo-sitefinitydb' }
+                @{ Name = 'DatabaseVersion'; Value = 'dwp-foo-sitefinitydb' }
             ) }
         } }
     
-        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dfc-foo-sitefinitydb" } -MockWith { return @{
-            DatabaseName      = 'dfc-foo-sitefinitydb'
-            ServerName        = 'dfc-foo-sql'
-            ResourceGroupName = 'dfc-foo-rg'
-            ResourceId        = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providers/Microsoft.Sql/servers/dfc-foo-sql/databases/dfc-foo-sitefinitydb'
+        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dwp-foo-sitefinitydb" } -MockWith { return @{
+            DatabaseName      = 'dwp-foo-sitefinitydb'
+            ServerName        = 'dwp-foo-sql'
+            ResourceGroupName = 'dwp-foo-rg'
+            ResourceId        = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providers/Microsoft.Sql/servers/dwp-foo-sql/databases/dwp-foo-sitefinitydb'
             SkuName           = 'Standard'
             ElasticPoolName   = $null
         } }
 
-        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dfc-foo-sitefinitydb-r123" } -MockWith { return $null }
+        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dwp-foo-sitefinitydb-r123" } -MockWith { return $null }
 
-        ./Copy-SitefinityDatabase -AppServiceName dfc-foo-as -ServerName dfc-foo-sql -ReleaseNumber 123
+        ./Copy-SitefinityDatabase -AppServiceName dwp-foo-as -ServerName dwp-foo-sql -ReleaseNumber 123
 
         It "should get the sql server resource description" {
-            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dfc-foo-sql" }
+            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dwp-foo-sql" }
         }
 
         It "should get the web app resource description" {
-            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dfc-foo-as" }
+            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dwp-foo-as" }
         }
 
         It "should get the web app details" {
             Assert-MockCalled Get-AzWebApp -Exactly 1 -ParameterFilter {
-                $Name -eq "dfc-foo-as" -and `
-                $ResourceGroupName -eq "dfc-foo-rg"
+                $Name -eq "dwp-foo-as" -and `
+                $ResourceGroupName -eq "dwp-foo-rg"
             }
         }
         
         It "should get the existing table" {
             Assert-MockCalled Get-AzSqlDatabase -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb"
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb"
             }
         }
 
-        It "should look for a copy database called dfc-foo-sitefinitydb-r123" {
+        It "should look for a copy database called dwp-foo-sitefinitydb-r123" {
             Assert-MockCalled Get-AzSqlDatabase -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb-r123"
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb-r123"
             }
         }
 
-        It "Should copy dfc-foo-sitefinitydb to dfc-foo-sitefinitydb-r123" {
+        It "Should copy dwp-foo-sitefinitydb to dwp-foo-sitefinitydb-r123" {
             Assert-MockCalled New-AzSqlDatabaseCopy -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb" -and `
-                $CopyDatabaseName -eq "dfc-foo-sitefinitydb-r123" -and `
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb" -and `
+                $CopyDatabaseName -eq "dwp-foo-sitefinitydb-r123" -and `
                 $ElasticPoolName -eq $null
             }
         }
@@ -240,67 +240,67 @@ Describe "Copy-SitefinityDatabase unit tests" -Tag "Unit" {
     Context "FQDN SQL server name passed and currently an elastic pool database with version number" {
 
         Mock Get-AzWebApp -MockWith { return @{
-            Name          = 'dfc-foo-as'
+            Name          = 'dwp-foo-as'
             Kind          = 'app'
-            ResourceGroup = 'dfc-foo-rg'
+            ResourceGroup = 'dwp-foo-rg'
             Type          = 'Microsoft.Web/sites'
-            Id            = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providersMicrosoft.Web/sites/dfc-foo-as'
+            Id            = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providersMicrosoft.Web/sites/dwp-foo-as'
             SiteConfig    = @{ AppSettings = @(
-                @{ Name = 'DatabaseVersion'; Value = 'dfc-foo-sitefinitydb-r100' }
+                @{ Name = 'DatabaseVersion'; Value = 'dwp-foo-sitefinitydb-r100' }
             ) }
         } }
     
-        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dfc-foo-sitefinitydb-r100" } -MockWith { return @{
-            DatabaseName      = 'dfc-foo-sitefinitydb'
-            ServerName        = 'dfc-foo-sql'
-            ResourceGroupName = 'dfc-foo-rg'
-            ResourceId        = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providers/Microsoft.Sql/servers/dfc-foo-sql/databases/dfc-foo-sitefinitydb-r100'
+        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dwp-foo-sitefinitydb-r100" } -MockWith { return @{
+            DatabaseName      = 'dwp-foo-sitefinitydb'
+            ServerName        = 'dwp-foo-sql'
+            ResourceGroupName = 'dwp-foo-rg'
+            ResourceId        = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providers/Microsoft.Sql/servers/dwp-foo-sql/databases/dwp-foo-sitefinitydb-r100'
             SkuName           = 'ElasticPool'
-            ElasticPoolName   = 'dfc-foo-epl'
+            ElasticPoolName   = 'dwp-foo-epl'
         } }
 
-        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dfc-foo-sitefinitydb-r124" } -MockWith { return $null }
+        Mock Get-AzSqlDatabase -ParameterFilter { $DatabaseName -eq "dwp-foo-sitefinitydb-r124" } -MockWith { return $null }
 
-        ./Copy-SitefinityDatabase -AppServiceName dfc-foo-as -ServerName dfc-foo-sql.database.windows.net -ReleaseNumber 124
+        ./Copy-SitefinityDatabase -AppServiceName dwp-foo-as -ServerName dwp-foo-sql.database.windows.net -ReleaseNumber 124
 
         It "should get the sql server resource description using name only" {
-            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dfc-foo-sql" }
+            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dwp-foo-sql" }
         }
 
         It "should get the web app resource description" {
-            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dfc-foo-as" }
+            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dwp-foo-as" }
         }
 
         It "should get the web app details" {
             Assert-MockCalled Get-AzWebApp -Exactly 1 -ParameterFilter {
-                $Name -eq "dfc-foo-as" -and `
-                $ResourceGroupName -eq "dfc-foo-rg"
+                $Name -eq "dwp-foo-as" -and `
+                $ResourceGroupName -eq "dwp-foo-rg"
             }
         }
         
         It "should get the existing table" {
             Assert-MockCalled Get-AzSqlDatabase -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb-r100"
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb-r100"
             }
         }
 
-        It "should look for a copy database called dfc-foo-sitefinitydb-r124" {
+        It "should look for a copy database called dwp-foo-sitefinitydb-r124" {
             Assert-MockCalled Get-AzSqlDatabase -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb-r124"
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb-r124"
             }
         }
 
-        It "Should copy dfc-foo-sitefinitydb to dfc-foo-sitefinitydb-r124 in elastic pool" {
+        It "Should copy dwp-foo-sitefinitydb to dwp-foo-sitefinitydb-r124 in elastic pool" {
             Assert-MockCalled New-AzSqlDatabaseCopy -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb-r100" -and `
-                $CopyDatabaseName -eq "dfc-foo-sitefinitydb-r124" -and `
-                $ElasticPoolName -eq "dfc-foo-epl"
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb-r100" -and `
+                $CopyDatabaseName -eq "dwp-foo-sitefinitydb-r124" -and `
+                $ElasticPoolName -eq "dwp-foo-epl"
             }
         }
 
@@ -309,54 +309,54 @@ Describe "Copy-SitefinityDatabase unit tests" -Tag "Unit" {
     Context "When the copy already exists" {
 
         Mock Get-AzWebApp -MockWith { return @{
-            Name          = 'dfc-foo-as'
+            Name          = 'dwp-foo-as'
             Kind          = 'app'
-            ResourceGroup = 'dfc-foo-rg'
+            ResourceGroup = 'dwp-foo-rg'
             Type          = 'Microsoft.Web/sites'
-            Id            = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providersMicrosoft.Web/sites/dfc-foo-as'
+            Id            = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providersMicrosoft.Web/sites/dwp-foo-as'
             SiteConfig    = @{ AppSettings = @(
-                @{ Name = 'DatabaseVersion'; Value = 'dfc-foo-sitefinitydb-r101' }
+                @{ Name = 'DatabaseVersion'; Value = 'dwp-foo-sitefinitydb-r101' }
             ) }
         } }
     
         Mock Get-AzSqlDatabase -MockWith { return @{
-            DatabaseName      = 'dfc-foo-sitefinitydb-r1xx'
-            ServerName        = 'dfc-foo-sql'
-            ResourceGroupName = 'dfc-foo-rg'
-            ResourceId        = '/subscriptions/mock-sub/resourceGroups/dfc-foo-rg/providers/Microsoft.Sql/servers/dfc-foo-sql/databases/dfc-foo-sitefinitydb-r1xx'
+            DatabaseName      = 'dwp-foo-sitefinitydb-r1xx'
+            ServerName        = 'dwp-foo-sql'
+            ResourceGroupName = 'dwp-foo-rg'
+            ResourceId        = '/subscriptions/mock-sub/resourceGroups/dwp-foo-rg/providers/Microsoft.Sql/servers/dwp-foo-sql/databases/dwp-foo-sitefinitydb-r1xx'
             SkuName           = 'Standard'
         } }
 
-        ./Copy-SitefinityDatabase -AppServiceName dfc-foo-as -ServerName dfc-foo-sql -ReleaseNumber 125
+        ./Copy-SitefinityDatabase -AppServiceName dwp-foo-as -ServerName dwp-foo-sql -ReleaseNumber 125
 
         It "should get the sql server resource description" {
-            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dfc-foo-sql" }
+            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dwp-foo-sql" }
         }
 
         It "should get the web app resource description" {
-            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dfc-foo-as" }
+            Assert-MockCalled Get-AzResource -Exactly 1 -ParameterFilter { $Name -eq "dwp-foo-as" }
         }
 
         It "should get the web app details" {
             Assert-MockCalled Get-AzWebApp -Exactly 1 -ParameterFilter {
-                $Name -eq "dfc-foo-as" -and `
-                $ResourceGroupName -eq "dfc-foo-rg"
+                $Name -eq "dwp-foo-as" -and `
+                $ResourceGroupName -eq "dwp-foo-rg"
             }
         }
         
         It "should get the existing table" {
             Assert-MockCalled Get-AzSqlDatabase -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb-r101"
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb-r101"
             }
         }
 
-        It "should look for a copy database called dfc-foo-sitefinitydb-r125" {
+        It "should look for a copy database called dwp-foo-sitefinitydb-r125" {
             Assert-MockCalled Get-AzSqlDatabase -Exactly 1 -ParameterFilter {
-                $ResourceGroupName -eq "dfc-foo-rg" -and `
-                $ServerName -eq "dfc-foo-sql" -and `
-                $DatabaseName -eq "dfc-foo-sitefinitydb-r125"
+                $ResourceGroupName -eq "dwp-foo-rg" -and `
+                $ServerName -eq "dwp-foo-sql" -and `
+                $DatabaseName -eq "dwp-foo-sitefinitydb-r125"
             }
         }
 

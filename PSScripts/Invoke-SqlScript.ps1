@@ -22,7 +22,7 @@ SQL SA administrator password
 SQL script to run
 
 .EXAMPLE
-Set-SqlLoginPassword -SQLServerFqdn dfc-foo-bar-sql.database.windows.net -SQLDatabase dfc-foo-bar-db -SQLAdminUsername sa -SQLAdminPassword password1 SQLScript C:\Path\To\Script.sql
+Set-SqlLoginPassword -SQLServerFqdn dwp-foo-bar-sql.database.windows.net -SQLDatabase dwp-foo-bar-db -SQLAdminUsername sa -SQLAdminPassword password1 SQLScript C:\Path\To\Script.sql
 
 #>
 

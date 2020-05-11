@@ -6,7 +6,7 @@ Describe "Redis Cache Deployment Tests" -Tag "Acceptance" {
   
   Context "When a Redis Cache is deployed with just a name" {
     $TemplateParameters = @{
-      redisName = "dfc-foo-bar-rds"
+      redisName = "dwp-foo-bar-rds"
     }
     $TestTemplateParams = @{
       ResourceGroupName       = $ResourceGroupName

@@ -18,7 +18,7 @@ Name of the secret to create
 Password for the pfx file
 
 .EXAMPLE
-Add-KeyVaultCertificate -KeyVaultName dfc-foo-kv -SecretName mycert -PfxFilePath C:\path\to\cert.pfx -PfxPassword myPa$$w0rd
+Add-KeyVaultCertificate -KeyVaultName dwp-foo-kv -SecretName mycert -PfxFilePath C:\path\to\cert.pfx -PfxPassword myPa$$w0rd
 
 #>
 param(

@@ -12,7 +12,7 @@ Keyvault to add the secret to
 Resource Group for the key vault
 
 .EXAMPLE
-New-KeyVault -KeyVaultName dfc-foo-kv -ResourceGroupName dfc-foo-rg
+New-KeyVault -KeyVaultName dwp-foo-kv -ResourceGroupName dwp-foo-rg
 
 #>
 param(

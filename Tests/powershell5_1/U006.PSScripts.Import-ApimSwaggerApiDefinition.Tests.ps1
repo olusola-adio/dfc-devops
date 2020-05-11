@@ -16,10 +16,10 @@ Describe "Import-ApimSwaggerApiDefinition unit tests" -Tag "Unit" {
         Mock Import-AzureRmApiManagementApi
 
         $CmdletParameters = @{
-           ApimResourceGroup = "dfc-foo-bar-rg"
-           InstanceName = "dfc-foo-bar-apim"
+           ApimResourceGroup = "dwp-foo-bar-rg"
+           InstanceName = "dwp-foo-bar-apim"
            ApiName = "bar"
-           SwaggerSpecificationUrl = "https://dfc-foo-bar-fa.azurewebsites.net/api/bar/bar-api-definition"
+           SwaggerSpecificationUrl = "https://dwp-foo-bar-fa.azurewebsites.net/api/bar/bar-api-definition"
        }
 
         .\Import-ApimSwaggerApiDefinition @CmdletParameters
@@ -45,10 +45,10 @@ Describe "Import-ApimSwaggerApiDefinition unit tests" -Tag "Unit" {
         Mock Import-AzApiManagementApi
 
         $CmdletParameters = @{
-           ApimResourceGroup = "dfc-foo-bar-rg"
-           InstanceName = "dfc-foo-bar-apim"
+           ApimResourceGroup = "dwp-foo-bar-rg"
+           InstanceName = "dwp-foo-bar-apim"
            ApiName = "bar"
-           SwaggerSpecificationUrl = "https://dfc-foo-bar-fa.azurewebsites.net/api/bar/bar-api-definition"
+           SwaggerSpecificationUrl = "https://dwp-foo-bar-fa.azurewebsites.net/api/bar/bar-api-definition"
            UseAzModule = $true
        }
 

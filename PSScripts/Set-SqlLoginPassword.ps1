@@ -31,7 +31,7 @@ New SQL login password
 Optional additional script to run
 
 .EXAMPLE
-Set-SqlLoginPassword -SQLServerName dfc-foo-bar-sql -SQLDatabase dfc-foo-bar-db -SQLAdminUsername sa -SQLAdminPassword password1 -SQLLogin connection_user -SQLLoginPassword abc123
+Set-SqlLoginPassword -SQLServerName dwp-foo-bar-sql -SQLDatabase dwp-foo-bar-db -SQLAdminUsername sa -SQLAdminPassword password1 -SQLLogin connection_user -SQLLoginPassword abc123
 
 #>
 

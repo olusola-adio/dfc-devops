@@ -6,8 +6,8 @@ Describe "App Gateway Deployment Tests" -Tag "Acceptance" {
   
   Context "When an app gateway is deployed with just a single pool" {
     $TemplateParameters = @{
-      appGatewayName      = "dfc-foo-bar-ag"
-      subnetRef           = "/subscriptions/bcf9fd2c-cdb6-4af1-9890-9c12785ee2f9/resourceGroups/dfc-foo-bar-rg/providers/Microsoft.Network/virtualNetworks/dfc-foo-bar-vnet/subnets/appgateway"
+      appGatewayName      = "dwp-foo-bar-ag"
+      subnetRef           = "/subscriptions/bcf9fd2c-cdb6-4af1-9890-9c12785ee2f9/resourceGroups/dwp-foo-bar-rg/providers/Microsoft.Network/virtualNetworks/dwp-foo-bar-vnet/subnets/appgateway"
       backendPools        = @( @{
                                   name = "mypool"
                                   fqdn = "foo.example.net"

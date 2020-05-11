@@ -4,9 +4,9 @@ $SQLLogin = "connection-user"
 $SQLLoginPassword = "not-a-real-password"
 
 $params = @{
-    ResourceGroupName = "dfc-foo-bar-rg"
-    SQLServerName     = "dfc-foo-bar-sql"
-    SQLDatabase       = "dfc-foo-bar-db" 
+    ResourceGroupName = "dwp-foo-bar-rg"
+    SQLServerName     = "dwp-foo-bar-sql"
+    SQLDatabase       = "dwp-foo-bar-db" 
     SQLAdminUsername  = "admin"
     SQLAdminPassword  = "not-a-real-password"
     SQLLogin          = $SQLLogin
@@ -24,13 +24,13 @@ Describe "Set-SqlLoginPassword unit tests" -Tag "Unit" {
 
     Mock Invoke-Sqlcmd
     Mock Get-AzureRmSqlServer {
-        $mock = '{ "ResourceGroupName": "dfc-foo-bar-rg", "ServerName": "dfc-foo-bar-sql", "FullyQualifiedDomainName": "dfc-foo-bar-sql.database.windows.net" }'
+        $mock = '{ "ResourceGroupName": "dwp-foo-bar-rg", "ServerName": "dwp-foo-bar-sql", "FullyQualifiedDomainName": "dwp-foo-bar-sql.database.windows.net" }'
         return ConvertFrom-Json $mock
     }
 
     # mock Get-AzureRmSqlDatabase returns offline
     Mock Get-AzureRmSqlDatabase {
-        $offlinemock = '{ "ResourceGroupName": "dfc-foo-bar-rg", "ServerName": "dfc-foo-bar-sql", "DatabaseName": "dfc-foo-bar-db", "Status": "Offline" }'
+        $offlinemock = '{ "ResourceGroupName": "dwp-foo-bar-rg", "ServerName": "dwp-foo-bar-sql", "DatabaseName": "dwp-foo-bar-db", "Status": "Offline" }'
         return ConvertFrom-Json $offlinemock
     }
 
@@ -42,7 +42,7 @@ Describe "Set-SqlLoginPassword unit tests" -Tag "Unit" {
 
     # mock Get-AzureRmSqlDatabase returns online
     Mock Get-AzureRmSqlDatabase {
-        $onlinemock = '{ "ResourceGroupName": "dfc-foo-bar-rg", "ServerName": "dfc-foo-bar-sql", "DatabaseName": "dfc-foo-bar-db", "Status": "Online" }'
+        $onlinemock = '{ "ResourceGroupName": "dwp-foo-bar-rg", "ServerName": "dwp-foo-bar-sql", "DatabaseName": "dwp-foo-bar-db", "Status": "Online" }'
         return ConvertFrom-Json $onlinemock
     }
 

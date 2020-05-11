@@ -6,7 +6,7 @@ Describe "Certificate Deployment Tests" -Tag "Acceptance" {
   
   Context "When a single certificate from the key vault is created" {
     $TemplateParameters = @{
-      keyVaultName            = "dfc-foo-bar-kv"
+      keyVaultName            = "dwp-foo-bar-kv"
       keyVaultCertificateName = "foo.example.com"
     }
     $TestTemplateParams = @{

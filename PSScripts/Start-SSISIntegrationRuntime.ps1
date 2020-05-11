@@ -16,7 +16,7 @@ The name of the v2 Azure DataFactory instance containing the SSIS integration ru
 The name of the SSIS runtime to start
 
 .EXAMPLE
-Start-SSISIntegrationRuntime.ps1 -ResourceGroupName dfc-foo-bar-rg -DataFactoryName dfc-foo-msql-df -RuntimeName ssisRuntimeName
+Start-SSISIntegrationRuntime.ps1 -ResourceGroupName dwp-foo-bar-rg -DataFactoryName dwp-foo-msql-df -RuntimeName ssisRuntimeName
 #>
 
 param(

@@ -33,7 +33,7 @@ The full path to the swagger defintion
 (optional)  Defaults to false.  Set this parameter to $true to use the Az cmdlets for zero downtime deployments.  This parameter can be removed at a later date when the AzureRm cmdlets are no longer required.
 
 .EXAMPLE
-Import-ApimSwaggerApiDefinition -ApimResourceGroup dfc-foo-bar-rg -InstanceName dfc-foo-bar-apim -ApiName bar -SwaggerSpecificationUrl "https://dfc-foo-bar-fa.azurewebsites.net/api/bar/api-definition" -SwaggerSpecificationFile -OutputFilePath $(System.DefaultWorkingDirectory)/SwaggerFile -Verbose
+Import-ApimSwaggerApiDefinition -ApimResourceGroup dwp-foo-bar-rg -InstanceName dwp-foo-bar-apim -ApiName bar -SwaggerSpecificationUrl "https://dwp-foo-bar-fa.azurewebsites.net/api/bar/api-definition" -SwaggerSpecificationFile -OutputFilePath $(System.DefaultWorkingDirectory)/SwaggerFile -Verbose
 
 #>
 [CmdletBinding()]

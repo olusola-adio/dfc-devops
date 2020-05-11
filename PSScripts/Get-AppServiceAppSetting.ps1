@@ -19,7 +19,7 @@ App setting value to read
 Optional variable name to store the app setting value in (defaults to App Setting name)
 
 .EXAMPLE
-Get-AppServiceAppSetting -AppServiceName dfc-foo-bar-as -AppSetting myAppSetting
+Get-AppServiceAppSetting -AppServiceName dwp-foo-bar-as -AppSetting myAppSetting
 
 #>
 

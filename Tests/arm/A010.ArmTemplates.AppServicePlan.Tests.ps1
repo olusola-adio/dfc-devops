@@ -6,7 +6,7 @@ Describe "App Service Plan Deployment Tests" -Tag "Acceptance" {
   
   Context "When an app service plan is deployed with just name" {
     $TemplateParameters = @{
-      appServicePlanName = "dfc-foo-bar-asp"
+      appServicePlanName = "dwp-foo-bar-asp"
     }
     $TestTemplateParams = @{
       ResourceGroupName       = $ResourceGroupName

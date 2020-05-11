@@ -6,7 +6,7 @@ Describe "Service Bus Topic Authorization Rule (shared access policy) Deployment
   
   Context "When deploying a shared access policy to a Service Bus Topic" {
     $TemplateParameters = @{
-      servicebusName        = "dfc-foo-bar-ns"
+      servicebusName        = "dwp-foo-bar-ns"
       topicName             = "topic-name"
       authorizationRuleName = "myrule"
       rights                = @( "listen" )

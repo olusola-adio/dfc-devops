@@ -7,7 +7,7 @@ Describe "Cognitive Services account Tests" -Tag "Acceptance" {
   Context "When a Spellcheck Cognitive Services account is deployed" {
 
     $TemplateParameters = @{
-      cognitiveServiceName = "dfc-foo-bar-cog-01"
+      cognitiveServiceName = "dwp-foo-bar-cog-01"
       cognitiveServiceType = "Bing.SpellCheck.v7" # global location
     }
     $TestTemplateParams = @{
@@ -27,7 +27,7 @@ Describe "Cognitive Services account Tests" -Tag "Acceptance" {
   Context "When a Facial Recognition Cognitive Services account is deployed" {
     
     $TemplateParameters = @{
-      cognitiveServiceName = "dfc-foo-bar-cog-02"
+      cognitiveServiceName = "dwp-foo-bar-cog-02"
       cognitiveServiceType = "Face" # local location
     }
     $TestTemplateParams = @{

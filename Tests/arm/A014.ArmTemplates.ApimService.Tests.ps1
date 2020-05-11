@@ -7,7 +7,7 @@ Describe "Apim Service Deployment Tests" -Tag "Acceptance" {
     Context "When APIM service is deployed with just name, admin email, environment name and organisation name" {
         $TemplateParameters = @{
             adminEmail          = "foo@bar.com"
-            apimServiceName     = "dfc-foo-bar-apim"
+            apimServiceName     = "dwp-foo-bar-apim"
             environmentName     = "foo"
             organizationName    = "Foo Bar"
         }
