@@ -1,7 +1,7 @@
 parameters:
   ArmTemplateRoot: ''
   SolutionBaseName: ''
-  AzureSubscription: 'Visual Studio Enterprise Subscription – MPN (d28ae51b-c7ef-41b3-8ee0-644dac2b5152)'
+  AzureSubscription: 'dwp(bcf9fd2c-cdb6-4af1-9890-9c12785ee2f9)'
   TestArmTemplateScriptUrl: https://raw.githubusercontent.com/olusola-adio/dfc-devops/master/PSScripts/Test-ArmTemplate.ps1
   TestArmTemplateScriptFilePath: $(System.DefaultWorkingDirectory)\Test-ArmTemplate.ps1
   TokenizeTestParameters: false
