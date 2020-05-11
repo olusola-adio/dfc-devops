@@ -28,7 +28,7 @@ pr:
 stages:
 - template: StageTemplates/RunTests.yml
   parameters:
-    AzureSubscription: 'dwp(bcf9fd2c-cdb6-4af1-9890-9c12785ee2f9)
+    AzureSubscription: 'dwp(bcf9fd2c-cdb6-4af1-9890-9c12785ee2f9)'
     Powershell5CodeCoveragePercentage: 45
     PowershellCoreCodeCoveragePercentage: 25
 
