@@ -18,7 +18,7 @@ Creates the Service Principal with a secret that is stored in a KeyVault
 Required if AddSecret is set
 
 .EXAMPLE
- .\New-ApplicationRegistration.ps1 -AppRegistrationName BarApplication -AddSecret -KeyVaultName olu-foo-shared-kv -Verbose
+ .\New-ApplicationRegistration.ps1 -AppRegistrationName BarApplication -AddSecret -KeyVaultName dwp-foo-shared-kv -Verbose
 
 .NOTES
 This cmdlet is designed to run from an Azure DevOps pipeline using a Service Connection.

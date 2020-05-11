@@ -21,7 +21,7 @@ Name of the storage account that the static site will be enabled on
 [Optional] Name of the error page, defaults to error404.html
 
 .EXAMPLE
-Enable-AzureStorageStaticSite.ps1 -StorageAccountName olufoosharedstr
+Enable-AzureStorageStaticSite.ps1 -StorageAccountName dwpfoosharedstr
 #>
 [CmdletBinding()]
 param(
