@@ -26,12 +26,14 @@ This cmdlet is designed to run from an Azure DevOps pipeline using a Service Con
 The Service Principal that the connection authenticates with will need the following permissions to create the application registration:
 - Azure Active Directory Graph Application Directory.ReadWrite.All
 - Azure Active Directory Graph Application Application.ReadWrite.OwnedBy (this assumes that the same Service Connection was used to create the Service Principal, eg using the New-ApplicationRegistration script)
+
+    [ValidatePattern("^(Microsoft Graph|dfc-\w+-.+)$")]
+
 #>
 [CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Low')]
 param(
     [Parameter(Mandatory=$true)]
     [String]$AppRegistrationDisplayName,
-    [ValidatePattern("^(Microsoft Graph|dfc-\w+-.+)$")]
     [Parameter(Mandatory=$true)]
     [String]$ApiName,
     [Parameter(Mandatory=$true, ParameterSetName="Both")]
