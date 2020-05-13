@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "dfc-test-template-rg"
+$ResourceGroupName = "dwp-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\ServiceBus\servicebus-topic.json"
 
 Describe "Service Bus Topic Deployment Tests" -Tag "Acceptance" {

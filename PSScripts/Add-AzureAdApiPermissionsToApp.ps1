@@ -31,7 +31,6 @@ The Service Principal that the connection authenticates with will need the follo
 param(
     [Parameter(Mandatory=$true)]
     [String]$AppRegistrationDisplayName,
-    [ValidatePattern("^(Microsoft Graph|dfc-\w+-.+)$")]
     [Parameter(Mandatory=$true)]
     [String]$ApiName,
     [Parameter(Mandatory=$true, ParameterSetName="Both")]

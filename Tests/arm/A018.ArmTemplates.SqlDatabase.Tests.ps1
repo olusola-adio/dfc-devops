@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "dfc-test-template-rg"
+$ResourceGroupName = "dwp-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\SqlServer\sql-database.json"
 $TemplateParametersDefault = @{
     databaseName = "dfc-foo-bar-db"

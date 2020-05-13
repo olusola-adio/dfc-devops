@@ -8,7 +8,7 @@ Sample master template snippet
 
 ```json
 "variables": {
-  "deploymentUrlBase": "https://raw.githubusercontent.com/SkillsFundingAgency/dfc-devops/master/ArmTemplates/"
+  "deploymentUrlBase": "https://raw.githubusercontent.com/olusola-adio/dfc-devops/master/ArmTemplates/"
 },
 "resources": [
   {

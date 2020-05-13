@@ -1,5 +1,5 @@
 # common variables
-$ResourceGroupName = "dfc-test-template-rg"
+$ResourceGroupName = "dwp-test-template-rg"
 $TemplateFile = "$PSScriptRoot\..\..\ArmTemplates\storage-account.json"
 
 Describe "Storage Account Deployment Tests" -Tag "Acceptance" {
