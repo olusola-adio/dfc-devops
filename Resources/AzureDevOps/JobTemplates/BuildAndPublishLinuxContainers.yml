@@ -8,7 +8,7 @@ jobs:
     vmImage: 'ubuntu-latest'
   steps:
   - script: dir $(Build.SourcesDirectory)
-  - script: dir $(System.DefaultWorkingDirectory)
+  - script: dir $(System.DefaultWorkingDirectory)/DockerFiles
   # Build and publish the NCS.AzureDevOpsAgents.OWASP docker image
   - template: AzureDevOpsTemplates/Build/StepTemplates/dfc-docker-publish-k8smanifest.yml@dfc-devops
     parameters:
