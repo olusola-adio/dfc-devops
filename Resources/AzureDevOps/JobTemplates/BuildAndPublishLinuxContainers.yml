@@ -15,7 +15,7 @@ jobs:
       ContainerRegistryAdminUser: ${{ parameters.ContainerRegistryAdminUser }}
       ContainerRegistryPassword: ${{ parameters.ContainerRegistryPassword }}
       DockerfileName: owasp-agent.Dockerfile
-      DockerfileContext: '../DockerFiles/AzureDevOpsAgents'
+      DockerfileContext: '$(System.DefaultWorkingDirectory)/DockerFiles'
       ImageBaseName: NCS.AzureDevOpsAgents.OWASP
       ImageTag: $(Build.BuildNumber)
       ManifestFileName: owasp-agent.kubernetes.yml
@@ -25,7 +25,7 @@ jobs:
       ContainerRegistryAdminUser: ${{ parameters.ContainerRegistryAdminUser }}
       ContainerRegistryPassword: ${{ parameters.ContainerRegistryPassword }}
       DockerfileName: jmeter-agent.Dockerfile
-      DockerfileContext: '../DockerFiles/AzureDevOpsAgents'
+      DockerfileContext: '$(System.DefaultWorkingDirectory)/DockerFiles'
       ImageBaseName: NCS.AzureDevOpsAgents.JMeter
       ImageTag: $(Build.BuildNumber)
       ManifestFileName: jmeter-agent.kubernetes.yml
@@ -35,7 +35,7 @@ jobs:
       ContainerRegistryAdminUser: ${{ parameters.ContainerRegistryAdminUser }}
       ContainerRegistryPassword: ${{ parameters.ContainerRegistryPassword }}
       DockerfileName: jmeter-slave.Dockerfile
-      DockerfileContext: '../DockerFiles/AzureDevOpsAgents'
+      DockerfileContext: '$(System.DefaultWorkingDirectory)/DockerFiles'
       ImageBaseName: NCS.AzureDevOpsAgents.JMeterSlaves
       ImageTag: $(Build.BuildNumber)
       ManifestFileName: jmeter-slaves.kubernetes.yml
