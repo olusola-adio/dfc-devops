@@ -26,8 +26,8 @@ steps:
 - script: |
     cd $(Build.ArtifactStagingDirectory)
     mkdir ${{ parameters.ImageBaseName }}
-    cd ${{ parameters.DockerfileContext }}
-  displayName: 'Create dir ${{ parameters.ImageBaseName }}'
+    cd $(System.DefaultWorkingDirectory)
+  displayName: 'Create dir $(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}'
   condition: ne('${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}', '')
 - task: CopyFiles@2
   displayName: 'Copy Manifest File to: $(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}'
