@@ -23,16 +23,22 @@ steps:
     docker push ${{ parameters.ContainerRegistryAdminUser }}.azurecr.io/$ImageName
   displayName: 'Publish ${{ parameters.ImageBaseName }}:${{ parameters.ImageTag }} image'
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+- script: |
+    cd $(Build.ArtifactStagingDirectory)
+    mkdir ${{ parameters.ImageBaseName }}
+    cd ${{ parameters.DockerfileContext }}
+  displayName: 'Create dir ${{ parameters.ImageBaseName }}'
+  condition: ne('${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}', '')
 - task: CopyFiles@2
-  displayName: 'Copy Manifest File to: $(Build.ArtifactStagingDirectory)\Manifest'
+  displayName: 'Copy Manifest File to: $(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}'
   condition: ne('${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}', '')
   inputs:
     Contents: '${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}/Manifest'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}'
     flattenFolders: true
 - task: PublishPipelineArtifact@0
   displayName: Publish Pipeline Artifact
   condition: ne('${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}', '')
   inputs:
-    targetPath: $(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}/Manifest
+    targetPath: $(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}
     artifactName: ${{ parameters.ImageBaseName }}
