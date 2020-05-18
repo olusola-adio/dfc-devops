@@ -26,9 +26,13 @@ steps:
 - script: |
     cd $(Build.ArtifactStagingDirectory)
     mkdir ${{ parameters.ImageBaseName }}
-    cd $(System.DefaultWorkingDirectory)
+    cd ${{ parameters.DockerfileContext }}
+    dir ${{ parameters.DockerfileContext }}
+    dir ${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}
   displayName: 'Create dir $(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}'
   condition: ne('${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}', '')
+- script: dir ${{ parameters.DockerfileContext }}
+- script: dir ${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}
 - task: CopyFiles@2
   displayName: 'Copy Manifest File to: $(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}'
   condition: ne('${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}', '')
