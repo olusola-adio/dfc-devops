@@ -18,7 +18,7 @@ jobs:
       DockerfileContext: '$(System.DefaultWorkingDirectory)/DockerFiles/AzureDevOpsAgents'
       ImageBaseName: NCS.AzureDevOpsAgents.OWASP
       ImageTag: $(Build.BuildNumber)
-      ManifestFileName: owasp-agent.kubernetes.yml
+      ManifestFilePath: owasp-agent.kubernetes.yml
   # Build and publish the NCS.AzureDevOpsAgents.JMeter docker image
   - template: AzureDevOpsTemplates/Build/StepTemplates/dfc-docker-publish-k8smanifest.yml@dfc-devops
     parameters:
@@ -28,7 +28,7 @@ jobs:
       DockerfileContext: '$(System.DefaultWorkingDirectory)/DockerFiles/AzureDevOpsAgents'
       ImageBaseName: NCS.AzureDevOpsAgents.JMeter
       ImageTag: $(Build.BuildNumber)
-      ManifestFileName: jmeter-agent.kubernetes.yml
+      ManifestFilePath: jmeter-agent.kubernetes.yml
   # Build and publish the NCS.AzureDevOpsAgents.JMeterSlave docker image
   - template: AzureDevOpsTemplates/Build/StepTemplates/dfc-docker-publish-k8smanifest.yml@dfc-devops
     parameters:
@@ -38,4 +38,4 @@ jobs:
       DockerfileContext: '$(System.DefaultWorkingDirectory)/DockerFiles/AzureDevOpsAgents'
       ImageBaseName: NCS.AzureDevOpsAgents.JMeterSlaves
       ImageTag: $(Build.BuildNumber)
-      ManifestFileName: jmeter-slaves.kubernetes.yml
+      ManifestFilePath: jmeter-slaves.kubernetes.yml
