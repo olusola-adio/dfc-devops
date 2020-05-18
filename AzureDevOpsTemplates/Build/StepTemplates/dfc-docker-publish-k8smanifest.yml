@@ -31,6 +31,8 @@ steps:
     dir ${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}
   displayName: 'Create dir $(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}'
   condition: ne('${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}', '')
+- script: dir ${{ parameters.DockerfileContext }}
+- script: dir ${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}
 - task: CopyFiles@2
   displayName: 'Copy Manifest File to: $(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}'
   condition: ne('${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}', '')
@@ -38,6 +40,7 @@ steps:
     Contents: '${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}'
     flattenFolders: true
+- script: dir '$(Build.ArtifactStagingDirectory)/${{ parameters.ImageBaseName }}'
 - task: PublishPipelineArtifact@0
   displayName: Publish Pipeline Artifact
   condition: ne('${{ parameters.DockerfileContext }}/${{ parameters.ManifestFilePath }}', '')
