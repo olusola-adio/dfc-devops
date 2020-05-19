@@ -16,12 +16,12 @@ cd DockerFiles\AzureDevOpsAgents
 docker build -t ncs.azuredevopsagents.owasp --file owasp-agent.Dockerfile .
 ```
 
-Or you can pull the image from the oludevsharedcr repository
+Or you can pull the image from the dwpdevsharedcr repository
 Install the az command line tools
 ```
 az login
-az acr login --name oludevsharedcr
-docker pull oludevsharedcr.azurecr.io/ncs.azuredevopsagents.owasp:<tag>
+az acr login --name dwpdevsharedcr
+docker pull dwpdevsharedcr.azurecr.io/ncs.azuredevopsagents.owasp:<tag>
 ```
 
 In the Azure DevOps portal go to Organisation Settings > Agent Pools > Add Pool and add a pool called 'NCS - OWASP'.  Then go to your user profile > Personal Access Tokens > New Token and create a token with Read and Manage permissions on Agent Pools and Read on Builds.
