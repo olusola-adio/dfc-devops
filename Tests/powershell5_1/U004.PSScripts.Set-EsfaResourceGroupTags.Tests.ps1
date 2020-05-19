@@ -24,7 +24,7 @@ Describe "Set-EsfaResourceGroupTags unit tests" -Tag "Unit" {
 
     It "Should update existing resource group if group exists with different tags" {
 
-        .\Set-EsfaResourceGroupTags -ResourceGroupName "dfc-foobar-rg" -Environment "Dev/Test" -ParentBusiness "National Careers Service" -ServiceOffering "Digital First Career Service (DFCS) Website (PP)"
+        .\Set-EsfaResourceGroupTags -ResourceGroupName "dfc-foobar-rg" -Environment "Dev/Test" -ParentBusiness "National Careers Service" -ServiceOffering "Logion Website"
 
         Assert-MockCalled Get-AzureRmResourceGroup -Exactly 1 -Scope It
         Assert-MockCalled New-AzureRmResourceGroup -Exactly 0 -Scope It
@@ -36,7 +36,7 @@ Describe "Set-EsfaResourceGroupTags unit tests" -Tag "Unit" {
 
         Mock Get-AzureRmResourceGroup
 
-        .\Set-EsfaResourceGroupTags -ResourceGroupName "dfc-barfoo-rg" -Environment "Dev/Test" -ParentBusiness "National Careers Service" -ServiceOffering "Digital First Career Service (DFCS) Website (PP)"
+        .\Set-EsfaResourceGroupTags -ResourceGroupName "dfc-barfoo-rg" -Environment "Dev/Test" -ParentBusiness "National Careers Service" -ServiceOffering "Logion Website"
 
         Assert-MockCalled Get-AzureRmResourceGroup -Exactly 1 -Scope It
         Assert-MockCalled New-AzureRmResourceGroup -Exactly 1 -Scope It
@@ -53,7 +53,7 @@ Describe "Set-EsfaResourceGroupTags unit tests" -Tag "Unit" {
             }
         }
     
-        .\Set-EsfaResourceGroupTags -ResourceGroupName "dfc-barfoo-rg" -Environment "Dev/Test" -ParentBusiness "National Careers Service" -ServiceOffering "Digital First Career Service (DFCS) Website (PP)"
+        .\Set-EsfaResourceGroupTags -ResourceGroupName "dfc-barfoo-rg" -Environment "Dev/Test" -ParentBusiness "National Careers Service" -ServiceOffering "Logion Website"
 
         Assert-MockCalled Get-AzureRmResourceGroup -Exactly 1 -Scope It
         Assert-MockCalled New-AzureRmResourceGroup -Exactly 0 -Scope It
