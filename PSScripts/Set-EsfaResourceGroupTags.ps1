@@ -37,7 +37,7 @@ param(
     [ValidateSet("Logion Limited", "Logion Limited (PP)")]
     [string]$ParentBusiness,
     [Parameter(Mandatory=$true)]
-    [ValidateSet("Course Directory", "Course Directory (PP)", "Data Sharing Service", "Data Sharing Service (PP)", "Digital First Career Service (DFCS) Website", "Digital First Career Service (DFCS) Website (PP)", "NCS Website", "NCS Website (PP)")]
+    [ValidateSet("Course Directory", "Course Directory (PP)", "Data Sharing Service", "Data Sharing Service (PP)", "Digital First Career Service (DFCS) Website", "Digital First Career Service (DFCS) Website (PP)", "Logion Website", "Logion Website (PP)")]
     [string]$ServiceOffering
 )
 
