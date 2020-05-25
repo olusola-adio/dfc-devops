@@ -33,13 +33,45 @@ jobs:
       targetType: inline
       script: 'Import-Module -Name PSScriptAnalyzer -Scope Local' # Required when targetType == Inline
   - task: PowerShell@2
+    displayName: 'Install-Module -Name Az.Storage'
     inputs:
       targetType: inline
       script: 'Install-Module -Name Az.Storage -Force -AllowClobber ' # Required when targetType == Inline
   - task: PowerShell@2
+    displayName: 'Import-Module -Name Az.Storage'
     inputs:
       targetType: inline
       script: 'Import-Module -Name Az.Storage -Scope Local' # Required when targetType == Inline
+  - task: PowerShell@2
+    displayName: 'Install-Module -Name Az.ApiManagement'
+    inputs:
+      targetType: inline
+      script: 'Install-Module -Name Az.ApiManagement -Force -AllowClobber ' # Required when targetType == Inline
+  - task: PowerShell@2
+    displayName: 'Import-Module -Name Az.ApiManagement'
+    inputs:
+      targetType: inline
+      script: 'Import-Module -Name Az.ApiManagement -Scope Local' # Required when targetType == Inline
+  - task: PowerShell@2
+    displayName: 'Install-Module -Name Az.KeyVault'
+    inputs:
+      targetType: inline
+      script: 'Install-Module -Name Az.KeyVault -Force -AllowClobber ' # Required when targetType == Inline
+  - task: PowerShell@2
+    displayName: 'Import-Module -Name Az.KeyVault'
+    inputs:
+      targetType: inline
+      script: 'Import-Module -Name Az.KeyVault -Scope Local' # Required when targetType == Inline
+  - task: PowerShell@2
+    displayName: 'Install-Module -Name Az.Websites'
+    inputs:
+      targetType: inline
+      script: 'Install-Module -Name Az.Websites -Force -AllowClobber ' # Required when targetType == Inline
+  - task: PowerShell@2
+    displayName: 'Import-Module -Name Az.Websites'
+    inputs:
+      targetType: inline
+      script: 'Import-Module -Name Az.Websites -Scope Local' # Required when targetType == Inline
   - ${{ if eq(parameters.RequiresAzurePowershell, true) }}:
     - task: AzurePowerShell@3
       displayName: 'AzurePowershell: Invoke-${{ parameters.TestType }}Tests.ps1'
