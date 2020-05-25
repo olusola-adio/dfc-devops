@@ -13,7 +13,8 @@ Describe "Code quality tests" -Tag "Quality" {
         "PSAvoidUsingEmptyCatchBlock",
         "PSAvoidUsingPlainTextForPassword",
         "PSAvoidUsingConvertToSecureStringWithPlainText",
-        "PSReviewUnusedParameter"
+        "PSReviewUnusedParameter",
+        "PSAvoidTrailingWhitespace"
     )
 
     foreach ($Script in $Scripts) {
