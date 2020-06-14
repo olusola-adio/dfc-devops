@@ -24,14 +24,17 @@ jobs:
     inputs:
       targetType: inline
       script: 'Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck' # Required when targetType == Inline
+      displayName: 'Install-Module Pester'
   - task: PowerShell@2
     inputs:
       targetType: inline
       script: 'Install-Module -Name PSScriptAnalyzer -Force -SkipPublisherCheck' # Required when targetType == Inline
+      displayName: 'Install-Module PSScriptAnalyzer'
   - task: PowerShell@2
     inputs:
       targetType: inline
       script: 'Import-Module -Name PSScriptAnalyzer -Scope Local' # Required when targetType == Inline
+      displayName: 'Import-Module PSScriptAnalyzer'
   - task: PowerShell@2
     displayName: 'Install-Module -Name Az.Storage'
     inputs:
