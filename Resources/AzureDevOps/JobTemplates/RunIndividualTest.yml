@@ -23,7 +23,7 @@ jobs:
   - task: PowerShell@2
     inputs:
       targetType: inline
-      script: 'Install-Module -Name Pester -Force -SkipPublisherCheck' # Required when targetType == Inline
+      script: 'Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck' # Required when targetType == Inline
   - task: PowerShell@2
     inputs:
       targetType: inline
